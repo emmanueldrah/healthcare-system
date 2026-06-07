@@ -1,3 +1,4 @@
+import api from '../../config/api';
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
@@ -7,7 +8,7 @@ const StaffManagement = () => {
   const { data: staff, isLoading } = useQuery({
     queryKey: ['staff'],
     queryFn: async () => {
-      const response = await axios.get('http://localhost:8767/api/v1/staff/');
+      const response = await api.get('/staff/');
       return response.data;
     }
   });

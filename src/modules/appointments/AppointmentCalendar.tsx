@@ -1,3 +1,4 @@
+import api from '../../config/api';
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
@@ -19,7 +20,7 @@ const AppointmentCalendar = () => {
   const { data: appointments, isLoading } = useQuery({
     queryKey: ['appointments'],
     queryFn: async () => {
-      const response = await axios.get('http://localhost:8767/api/v1/appointments/');
+      const response = await api.get('/appointments/');
       return response.data;
     }
   });

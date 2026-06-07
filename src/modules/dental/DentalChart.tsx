@@ -1,3 +1,4 @@
+import api from '../../config/api';
 import React, { useState } from 'react';
 import { Activity, ShieldAlert, Save, Info } from 'lucide-react';
 

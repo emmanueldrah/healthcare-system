@@ -1,3 +1,4 @@
+import api from '../../config/api';
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
@@ -10,7 +11,7 @@ const InvoiceForm = () => {
   const { data: bills, isLoading } = useQuery({
     queryKey: ['bills'],
     queryFn: async () => {
-      const response = await axios.get('http://localhost:8767/api/v1/billing/bills');
+      const response = await api.get('/billing/bills');
       return response.data;
     }
   });

@@ -1,3 +1,4 @@
+import api from '../../config/api';
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
@@ -7,7 +8,7 @@ const NHISClaims = () => {
   const { data: claims, isLoading } = useQuery({
     queryKey: ['nhis-claims'],
     queryFn: async () => {
-      const response = await axios.get('http://localhost:8767/api/v1/billing/nhis-claims');
+      const response = await api.get('/billing/nhis-claims');
       return response.data;
     }
   });
