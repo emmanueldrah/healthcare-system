@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: medicore
+      POSTGRES_USER: medicore
+      POSTGRES_PASSWORD: medicore_pass
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      target: api
+    environment:
+      DATABASE_URL: postgresql://medicore:medicore_pass@db:5432/medicore
+    ports:
+      - "8767:8767"
+    depends_on:
+      - db
+
+  web:
+    build:
+      context: .
+      target: web
+    ports:
+      - "80:80"
+    environment:
+      VITE_API_URL: http://api:8767
+
+volumes:
+  pgdata:

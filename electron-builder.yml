@@ -1,0 +1,36 @@
+appId: com.successabovedreams.medicore
+productName: MediCore
+copyright: Copyright © 2025 Success Above Dreams
+
+directories:
+  output: dist-electron
+
+files:
+  - dist/**/*
+  - dist-electron/**/*
+  - resources/**/*
+  - backend/dist/medicore-api
+  - backend/alembic/**/*
+  - backend/alembic.ini
+  - scripts/**/*
+
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  icon: resources/icons/icon.png
+
+linux:
+  target:
+    - target: AppImage
+      arch: [x64]
+    - target: deb
+      arch: [x64]
+  icon: resources/icons/icon.png
+  category: Science
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
